@@ -1,23 +1,4 @@
-That section at the bottom of your GitHub repo page — *“What do I add here?”* — is for your **README.md** file.
 
-This is where you add all the project explanation so that:
-
-* Recruiters understand your project
-* The company evaluating your assignment understands your architecture
-* Streamlit deployment link can be clicked
-* Code structure is clear
-* They know how to run it
-* It looks professional and complete
-
-So the **README content I gave you earlier** should be pasted **exactly there**.
-
----
-
-# ✅ **What you should paste in README.md**
-
-Copy-paste **ALL of the following** into your README:
-
----
 
 # 🌍 Multi-Agent Tourism System
 
