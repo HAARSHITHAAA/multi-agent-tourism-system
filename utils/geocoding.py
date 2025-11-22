@@ -1,19 +1,32 @@
 import requests
 
+API_KEY = "pk.01417d1c60545ef937bdc2f2d3eb36db"
+
 def geocode_place(place_name):
-    url = "https://nominatim.openstreetmap.org/search"
-    params = {"q": place_name, "format": "json", "limit": 1}
-    
-    headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; TourismApp/1.0; +https://example.com)",
-        "Accept-Language": "en-US,en;q=0.5"
+    url = "https://us1.locationiq.com/v1/search"
+    params = {
+        "key": API_KEY,
+        "q": place_name,
+        "format": "json",
+        "limit": 1
     }
 
     try:
-        res = requests.get(url, params=params, headers=headers, timeout=10)
+        res = requests.get(url, params=params, timeout=10)
         data = res.json()
+
+        if isinstance(data, dict) and data.get("error"):
+            return None, None, None
+
         if not data:
             return None, None, None
-        return float(data[0]["lat"]), float(data[0]["lon"]), data[0]["display_name"]
-    except:
+
+        lat = float(data[0]["lat"])
+        lon = float(data[0]["lon"])
+        display_name = data[0]["display_name"]
+
+        return lat, lon, display_name
+
+    except Exception as e:
+        print("Geocoding error:", e)
         return None, None, None
